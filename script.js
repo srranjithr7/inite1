@@ -167,3 +167,165 @@
   window.openInvite = openInvite;
   window.finishReveal = finishReveal;
 })();
+
+/* RSVP popup - Google Sheet counts + editable response from same device */
+document.addEventListener("DOMContentLoaded", () => {
+  const RSVP_ENDPOINT = "https://script.google.com/macros/s/AKfycbzY9aNDRp4SMArkPDgAVMgvN9BLGt2CVyB4XAfKBTqcSSwZtqrLqlMiuTBSHGwzUNEz9w/exec";
+
+  const modal = document.getElementById("rsvpModal");
+  const openBtn = document.getElementById("openRsvpModal");
+  const form = document.getElementById("rsvpForm");
+  const formView = document.getElementById("rsvpFormView");
+  const thanksView = document.getElementById("rsvpThanksView");
+  const duplicateNote = document.getElementById("rsvpDuplicateNote");
+  const submittedTime = document.getElementById("rsvpSubmittedTime");
+
+  const yesCount = document.getElementById("rsvpYesCount");
+  const noCount = document.getElementById("rsvpNoCount");
+  const maybeCount = document.getElementById("rsvpMaybeCount");
+
+  function getSavedResponse() {
+    try { return JSON.parse(localStorage.getItem("weddingRsvpResponse") || "null"); }
+    catch { return null; }
+  }
+
+  function setCounts(counts) {
+    if (yesCount) yesCount.textContent = counts.yes ?? 0;
+    if (noCount) noCount.textContent = counts.no ?? 0;
+    if (maybeCount) maybeCount.textContent = counts.maybe ?? 0;
+  }
+
+  async function loadCountsFromSheet() {
+    try {
+      const res = await fetch(RSVP_ENDPOINT + "?action=counts&v=" + Date.now(), {
+        method: "GET",
+        cache: "no-store"
+      });
+      const data = await res.json();
+      if (data && data.result === "success" && data.counts) setCounts(data.counts);
+    } catch (err) {
+      console.warn("RSVP count fetch failed", err);
+    }
+  }
+
+  function fillSavedResponse() {
+    const saved = getSavedResponse();
+    const submitBtn = form?.querySelector(".rsvpSubmit");
+
+    if (!form || !submitBtn) return;
+
+    if (saved) {
+      const nameEl = document.getElementById("guestName");
+      if (nameEl) nameEl.value = saved.name || "";
+      const radio = form.querySelector('input[name="attendance"][value="' + CSS.escape(saved.attendance || "") + '"]');
+      if (radio) radio.checked = true;
+
+      if (duplicateNote) duplicateNote.hidden = false;
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Update Response";
+    } else {
+      if (duplicateNote) duplicateNote.hidden = true;
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Send Response";
+    }
+  }
+
+  async function openRsvp() {
+    if (!modal) return;
+    setCounts({ yes: "…", no: "…", maybe: "…" });
+    await loadCountsFromSheet();
+    fillSavedResponse();
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("rsvpLocked");
+    if (formView) formView.hidden = false;
+    if (thanksView) thanksView.hidden = true;
+    setTimeout(() => document.getElementById("guestName")?.focus(), 120);
+  }
+
+  function closeRsvp() {
+    if (!modal) return;
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("rsvpLocked");
+  }
+
+  async function sendToGoogleSheet(response) {
+    await fetch(RSVP_ENDPOINT, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(response)
+    });
+  }
+
+  if (openBtn) openBtn.addEventListener("click", openRsvp);
+  document.querySelectorAll("[data-close-rsvp]").forEach((item) => item.addEventListener("click", closeRsvp));
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal?.classList.contains("open")) closeRsvp();
+  });
+
+  if (form) {
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const submitBtn = form.querySelector(".rsvpSubmit");
+      const name = document.getElementById("guestName")?.value.trim();
+      const attendance = form.querySelector('input[name="attendance"]:checked')?.value;
+      const saved = getSavedResponse();
+
+      if (!name || !attendance) return;
+
+      const now = new Date();
+      const response = {
+        name,
+        attendance,
+        submittedAt: now.toISOString(),
+        submittedAtDisplay: now.toLocaleString(),
+        device: navigator.userAgent,
+        mode: saved ? "update" : "new",
+        previousName: saved?.name || "",
+        previousAttendance: saved?.attendance || ""
+      };
+
+      if (submitBtn) {
+        submitBtn.classList.add("loading");
+        submitBtn.disabled = true;
+        submitBtn.textContent = saved ? "Updating..." : "Sending...";
+      }
+
+      try {
+        await sendToGoogleSheet(response);
+
+        localStorage.setItem("weddingRsvpSubmitted", "true");
+        localStorage.setItem("weddingRsvpResponse", JSON.stringify({
+          name,
+          attendance,
+          submittedAt: response.submittedAt,
+          submittedAtDisplay: response.submittedAtDisplay
+        }));
+
+        setTimeout(loadCountsFromSheet, 1200);
+
+        if (submittedTime) submittedTime.textContent = (saved ? "Updated: " : "Submitted: ") + response.submittedAtDisplay;
+        if (formView) formView.hidden = true;
+        if (thanksView) thanksView.hidden = false;
+        if (submitBtn) {
+          submitBtn.classList.remove("loading");
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Update Response";
+        }
+      } catch (error) {
+        if (submitBtn) {
+          submitBtn.classList.remove("loading");
+          submitBtn.disabled = false;
+          submitBtn.textContent = saved ? "Update Response" : "Send Response";
+        }
+        alert("Submission failed. Please try again.");
+      }
+    });
+  }
+
+  loadCountsFromSheet();
+});

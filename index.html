@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Inter:wght@300;400;500;600;700&family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=30030" />
+  <link rel="stylesheet" href="style.css?v=30090" />
 </head>
 <body>
   <div class="cover" id="cover" aria-label="Invitation cover">
@@ -93,17 +93,62 @@
       </div>
     </section>
 
+    
     <section class="rsvp section" id="rsvp">
       <div class="rsvpCard reveal">
-        <p class="eyebrow">Kindly Confirm</p>
-        <h2 class="sectionTitle">RSVP</h2>
-        <p>Please confirm your presence through WhatsApp.</p>
-        <a class="primaryBtn" href="https://wa.me/919585653566?text=Congratulations%20Ranjith%20and%20Sonaaly.%20I%20will%20attend%20the%20wedding." target="_blank" rel="noopener">WhatsApp RSVP</a>
+        <p class="eyebrow presenceLine">With Love, We Expect</p>
+        <h2 class="sectionTitle">Your Presence</h2>
+        <p>We are looking forward to celebrating our special day with you.</p>
+        <button class="primaryBtn" type="button" id="openRsvpModal">Confirm Presence</button>
       </div>
     </section>
+
+    <div class="rsvpModal" id="rsvpModal" aria-hidden="true">
+      <div class="rsvpModalBackdrop" data-close-rsvp></div>
+      <div class="rsvpModalCard" role="dialog" aria-modal="true" aria-labelledby="rsvpModalTitle">
+        <button class="rsvpClose" type="button" aria-label="Close RSVP" data-close-rsvp>&times;</button>
+
+        <div class="rsvpFormView" id="rsvpFormView">
+          <p class="eyebrow presenceLine">With Love, We Expect</p>
+          <h2 id="rsvpModalTitle">Your Presence</h2>
+          <form id="rsvpForm">
+            <label class="rsvpField">
+              <span>Your Name</span>
+              <input type="text" id="guestName" name="guestName" placeholder="Enter your name" required />
+            </label>
+
+            <div class="rsvpOptions" role="radiogroup" aria-label="Attendance confirmation">
+              <p>Will you bless us with your presence?</p>
+              <label><input type="radio" name="attendance" value="Yes, I'll attend" required /><span>Yes, I'll attend</span></label>
+              <label><input type="radio" name="attendance" value="No, I won't be able to attend" /><span>No, I won't be able to attend</span></label>
+              <label><input type="radio" name="attendance" value="Not sure yet" /><span>Not sure yet</span></label>
+            </div>
+
+            <button class="primaryBtn rsvpSubmit" type="submit">Send Response</button>
+          </form>
+
+          <div class="rsvpSummary" id="rsvpSummary" aria-label="RSVP response summary">
+            <div><strong id="rsvpYesCount">0</strong><span>Yes</span></div>
+            <div><strong id="rsvpNoCount">0</strong><span>No</span></div>
+            <div><strong id="rsvpMaybeCount">0</strong><span>Not Sure</span></div>
+          </div>
+          <p class="rsvpDuplicateNote" id="rsvpDuplicateNote" hidden>You already submitted from this device. You can update your response below.</p>
+        </div>
+
+        <div class="rsvpThanksView" id="rsvpThanksView" hidden>
+          <p class="eyebrow">Thank You</p>
+          <h2>Thank You ❤️</h2>
+          <p>Your response has been received.</p>
+          <p>Your presence means a lot to us.</p>
+          <p class="rsvpSubmittedTime" id="rsvpSubmittedTime"></p>
+          <button class="primaryBtn" type="button" data-close-rsvp>Close</button>
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <footer>Ranjith Rajagopal &amp; Sonaaly Sudharsanaa</footer>
-  <script src="script.js?v=30030"></script>
+  <script src="script.js?v=30090"></script>
 </body>
 </html>

@@ -1323,3 +1323,192 @@ footer { padding:32px 20px 42px; text-align:center; color:var(--soft); letter-sp
     line-height: .94 !important;
   }
 }
+
+
+/* === v30040: premium in-page RSVP popup === */
+.rsvpCard .primaryBtn { margin-top:18px!important; }
+
+.rsvpModal{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;padding:22px;}
+.rsvpModal.open{display:flex;}
+.rsvpModalBackdrop{position:absolute;inset:0;background:rgba(14,47,43,.42);backdrop-filter:blur(7px);animation:rsvpFade .28s ease both;}
+.rsvpModalCard{position:relative;z-index:1;width:min(92vw,520px);padding:34px 24px 28px;border-radius:30px;background:radial-gradient(circle at 50% 0%,rgba(212,175,106,.26),transparent 34%),linear-gradient(135deg,rgba(248,241,230,.96),rgba(231,216,195,.96));border:1px solid rgba(139,106,54,.28);box-shadow:0 34px 100px rgba(0,0,0,.28);text-align:center;animation:rsvpPop .34s cubic-bezier(.2,.9,.2,1) both;}
+.rsvpModalCard::before,.rsvpModalCard::after{content:"";position:absolute;left:28px;right:28px;height:1px;background:linear-gradient(90deg,transparent,rgba(139,106,54,.48),transparent);}
+.rsvpModalCard::before{top:18px}.rsvpModalCard::after{bottom:18px}
+.rsvpClose{position:absolute;top:12px;right:16px;width:38px;height:38px;border:0;border-radius:999px;background:rgba(246,239,227,.66);color:var(--deep);font-size:28px;line-height:1;cursor:pointer;}
+.rsvpModalCard h2{font-family:Italiana,serif;font-size:clamp(3rem,11vw,5rem);line-height:.95;font-weight:700;color:var(--deep);margin:8px 0 24px;}
+.rsvpField{display:block;text-align:left;margin:18px 0 20px;}
+.rsvpField span,.rsvpOptions p{display:block;color:var(--accent);font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px;}
+.rsvpField input{width:100%;min-height:52px;border-radius:16px;border:1px solid rgba(139,106,54,.32);background:rgba(255,255,255,.48);padding:0 16px;font:700 16px Inter,Arial,sans-serif;color:var(--deep);outline:none;}
+.rsvpField input:focus{border-color:rgba(139,106,54,.78);box-shadow:0 0 0 4px rgba(212,175,106,.18);}
+.rsvpOptions{text-align:left;margin:18px 0 24px;}
+.rsvpOptions label{display:flex;align-items:center;gap:12px;min-height:48px;margin:10px 0;padding:12px 14px;border:1px solid rgba(139,106,54,.24);border-radius:16px;background:rgba(255,255,255,.34);color:var(--deep);font-weight:800;cursor:pointer;}
+.rsvpOptions input{width:18px;height:18px;accent-color:var(--deep);}
+.rsvpSubmit.loading{opacity:.72;pointer-events:none;}
+.rsvpThanksView p{color:var(--soft);font-weight:700;line-height:1.7;margin:10px 0;}
+@keyframes rsvpFade{from{opacity:0}to{opacity:1}}
+@keyframes rsvpPop{from{opacity:0;transform:translateY(18px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+body.rsvpLocked{overflow:hidden;}
+@media(max-width:480px){.rsvpModal{padding:16px}.rsvpModalCard{padding:32px 18px 26px;border-radius:26px}.rsvpOptions label{font-size:14px}}
+
+
+/* === v30050: softer presence wording layout === */
+.rsvpCard .sectionTitle {
+  font-size: clamp(3.4rem, 11vw, 6.4rem) !important;
+}
+
+.rsvpCard p:not(.eyebrow) {
+  max-width: 520px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  font-weight: 700 !important;
+  line-height: 1.7 !important;
+}
+
+.rsvpModalCard h2#rsvpModalTitle {
+  font-size: clamp(2.65rem, 9vw, 4.6rem) !important;
+  line-height: .95 !important;
+  margin-bottom: 26px !important;
+}
+
+.rsvpOptions p {
+  letter-spacing: .12em !important;
+}
+
+.rsvpSubmit {
+  min-width: 210px !important;
+}
+
+
+/* === v30060: RSVP counts, duplicate prevention, submission time === */
+.rsvpSummary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 20px 0 0;
+}
+
+.rsvpSummary div {
+  padding: 12px 8px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.34);
+  border: 1px solid rgba(139,106,54,.22);
+}
+
+.rsvpSummary strong {
+  display: block;
+  font-family: "Nunito Sans", Inter, Arial, sans-serif;
+  font-size: 1.75rem;
+  line-height: 1;
+  font-weight: 900;
+  color: var(--deep);
+}
+
+.rsvpSummary span {
+  display: block;
+  margin-top: 6px;
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: var(--accent);
+}
+
+.rsvpDuplicateNote {
+  margin-top: 14px;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.rsvpSubmittedTime {
+  font-size: 12px;
+  font-weight: 800 !important;
+  color: var(--accent) !important;
+  letter-spacing: .06em;
+}
+
+.rsvpSubmit[disabled] {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+@media (max-width: 420px) {
+  .rsvpSummary {
+    gap: 7px;
+  }
+
+  .rsvpSummary strong {
+    font-size: 1.45rem;
+  }
+
+  .rsvpSummary span {
+    font-size: 9px;
+  }
+}
+
+
+/* === v30090: longer cinematic opening + editable RSVP wording === */
+.presenceLine {
+  white-space: normal !important;
+  letter-spacing: .26em !important;
+}
+
+/* Slower, more dramatic curtain opening */
+.coverGate {
+  transition: transform 2.65s cubic-bezier(.78,0,.16,1) !important;
+}
+
+.coverCard {
+  transition: opacity 1.15s ease, transform 1.55s cubic-bezier(.78,0,.16,1), filter 1.55s ease !important;
+}
+
+.cover.hide .coverCard {
+  opacity: 0 !important;
+  transform: scale(.88) !important;
+  filter: blur(3px) !important;
+}
+
+.cover .coverGateLeft::before,
+.cover .coverGateRight::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 70px !important;
+  opacity: .85 !important;
+  background: linear-gradient(90deg, rgba(255,255,255,.36), rgba(212,175,106,.22), transparent) !important;
+  transform: translateX(0) !important;
+  transition: transform 2.65s cubic-bezier(.78,0,.16,1), opacity 1.5s ease !important;
+}
+
+.cover .coverGateLeft::before {
+  right: 0 !important;
+}
+
+.cover .coverGateRight::before {
+  left: 0 !important;
+  transform: scaleX(-1) !important;
+}
+
+.cover.hide .coverGateLeft::before {
+  transform: translateX(-120px) !important;
+  opacity: 0 !important;
+}
+
+.cover.hide .coverGateRight::before {
+  transform: translateX(120px) scaleX(-1) !important;
+  opacity: 0 !important;
+}
+
+.cover::before,
+.cover::after {
+  transition: transform 2.65s cubic-bezier(.78,0,.16,1), opacity 1.35s ease !important;
+}
+
+.transitionSpark {
+  animation-duration: 2.1s !important;
+}
+
+.rsvpDuplicateNote {
+  color: var(--accent) !important;
+}
