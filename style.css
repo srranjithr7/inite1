@@ -1050,3 +1050,76 @@ footer { padding:32px 20px 42px; text-align:center; color:var(--soft); letter-sp
     line-height:.95 !important;
   }
 }
+
+
+/* === v29000: bold countdown, reordered title, larger bold venue, shorter scratch === */
+
+/* Countdown: title first, subtitle second, all bold */
+.countSection.countdownPhotoBg .countdownMainTitle {
+  font-weight: 800 !important;
+  font-family: Italiana, serif !important;
+  color: var(--deep) !important;
+  text-shadow: 0 3px 24px rgba(246,239,227,.90) !important;
+  margin-bottom: 10px !important;
+}
+
+.countSection.countdownPhotoBg .countdownSubTitle,
+.countSection.countdownPhotoBg .eyebrow {
+  font-weight: 800 !important;
+  color: var(--deep) !important;
+  letter-spacing: .34em !important;
+  text-shadow: 0 2px 18px rgba(246,239,227,.90) !important;
+}
+
+.countSection.countdownPhotoBg .countItem strong {
+  font-weight: 900 !important;
+  font-family: "Nunito Sans", Inter, Arial, sans-serif !important;
+  color: var(--deep) !important;
+}
+
+.countSection.countdownPhotoBg .countItem span {
+  font-weight: 900 !important;
+  color: var(--deep) !important;
+}
+
+/* Venue: make all text larger and bold */
+.venueContent .eyebrow {
+  font-size: clamp(.85rem, 2.1vw, 1.15rem) !important;
+  font-weight: 900 !important;
+  letter-spacing: .36em !important;
+  color: var(--deep) !important;
+}
+
+.venueContent .sectionTitle {
+  font-size: clamp(2.75rem, 8vw, 6.1rem) !important;
+  font-weight: 800 !important;
+  line-height: .92 !important;
+  color: var(--deep) !important;
+  text-shadow: 0 3px 26px rgba(246,239,227,.86) !important;
+}
+
+.venueContent p {
+  font-size: clamp(1.05rem, 2.6vw, 1.55rem) !important;
+  font-weight: 800 !important;
+  color: var(--deep) !important;
+}
+
+.venueContent .linkBtn {
+  font-weight: 900 !important;
+}
+
+@media (max-width:760px) {
+  .venueContent .sectionTitle {
+    font-size: clamp(2.25rem, 9.2vw, 3.45rem) !important;
+    line-height: .94 !important;
+  }
+
+  .venueContent p {
+    font-size: 1.05rem !important;
+  }
+
+  .countSection.countdownPhotoBg .countdownSubTitle,
+  .countSection.countdownPhotoBg .eyebrow {
+    letter-spacing: .22em !important;
+  }
+}
