@@ -400,8 +400,29 @@ footer { padding:32px 20px 42px; text-align:center; color:var(--soft); letter-sp
 }
 
 
-/* === v14000: natural botanical artwork + softer rounded date/countdown numbers === */
-/* Soft rounded numerals instead of sharp/spiky date and countdown digits */
+/* === v13000 FINAL: remove previous floral artwork + soften date/countdown numbers === */
+/* Remove all generated floral/scribble decorations from the first page and image */
+.heroContent::before,
+.heroContent::after,
+.heroPhoto::before,
+.heroPhoto::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  background-image: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+}
+
+/* Keep the first page clean and blended without separate fake flower artwork */
+.heroContent,
+.heroPhoto,
+.hero {
+  overflow: hidden !important;
+}
+
+/* Softer number styling for date and countdown: no sharp/spiky numerals */
 .dateCard,
 .month,
 .day,
@@ -409,198 +430,131 @@ footer { padding:32px 20px 42px; text-align:center; color:var(--soft); letter-sp
 .time,
 .countItem strong,
 .countItem span {
-  font-family: "Quicksand", Inter, Arial, sans-serif !important;
+  font-family: "Nunito Sans", Inter, Arial, sans-serif !important;
   font-variant-numeric: tabular-nums lining-nums !important;
   font-feature-settings: "tnum" 1, "lnum" 1 !important;
 }
 
-.day {
-  font-size: clamp(74px, 21vw, 94px) !important;
-  line-height: .94 !important;
-  font-weight: 500 !important;
-  letter-spacing: .005em !important;
-  color: var(--deep) !important;
-}
-
 .month {
   font-size: 13px !important;
-  letter-spacing: .20em !important;
+  letter-spacing: .22em !important;
   font-weight: 700 !important;
+  text-transform: uppercase !important;
+}
+
+.day {
+  font-size: clamp(76px, 22vw, 96px) !important;
+  line-height: .92 !important;
+  font-weight: 500 !important;
+  letter-spacing: .015em !important;
 }
 
 .year {
   font-size: 18px !important;
-  letter-spacing: .22em !important;
+  letter-spacing: .26em !important;
   font-weight: 600 !important;
 }
 
 .time {
   font-size: 13px !important;
-  letter-spacing: .06em !important;
+  letter-spacing: .08em !important;
   font-weight: 600 !important;
 }
 
+.countdown {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 6px !important;
+  width: 100% !important;
+  max-width: 520px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.countItem {
+  min-width: 0 !important;
+  min-height: 84px !important;
+  padding: 9px 3px !important;
+}
+
 .countItem strong {
-  font-family: "Quicksand", Inter, Arial, sans-serif !important;
-  font-size: clamp(24px, 7.2vw, 38px) !important;
+  font-size: clamp(24px, 7.5vw, 39px) !important;
   line-height: 1 !important;
   font-weight: 600 !important;
   letter-spacing: 0 !important;
 }
 
 .countItem span {
-  font-family: "Quicksand", Inter, Arial, sans-serif !important;
-  font-weight: 700 !important;
+  font-size: clamp(7px, 2.15vw, 10px) !important;
   letter-spacing: .03em !important;
+  font-weight: 700 !important;
 }
 
-/* Natural botanical line-art, replacing the old text/scribble flowers */
-.hero,
-.heroContent,
-.heroPhoto {
-  position: relative !important;
-}
-
-.heroContent {
-  overflow: visible !important;
-}
-
-.heroPhoto {
+/* Venue heading fit protection */
+.venueContent {
+  width: 100% !important;
+  max-width: 100% !important;
   overflow: hidden !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
 }
 
-.heroContent::before,
-.heroContent::after,
-.heroPhoto::before,
-.heroPhoto::after {
-  content: "" !important;
-  display: block !important;
-  position: absolute !important;
-  pointer-events: none !important;
-  z-index: 3 !important;
-  width: clamp(86px, 28vw, 150px) !important;
-  height: clamp(150px, 46vw, 240px) !important;
-  opacity: .70 !important;
-  background-repeat: no-repeat !important;
-  background-position: center !important;
-  background-size: contain !important;
-  filter: drop-shadow(0 10px 18px rgba(90,65,35,.10)) !important;
-}
-
-/* left botanical branch */
-.heroContent::before,
-.heroPhoto::before {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 130 230'%3E%3Cg fill='none' stroke='%238B6A36' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round' opacity='.82'%3E%3Cpath d='M78 216 C55 172 48 126 72 72 C82 49 94 30 110 14'/%3E%3Cpath d='M70 92 C52 78 39 62 35 42 C55 45 70 57 76 78'/%3E%3Cpath d='M62 129 C42 117 27 101 20 80 C43 81 60 95 68 114'/%3E%3Cpath d='M60 166 C40 157 24 142 14 122 C37 120 56 132 66 150'/%3E%3Cpath d='M82 63 C68 47 63 32 69 16 C86 24 95 40 93 58'/%3E%3Cpath d='M77 111 C91 93 106 83 124 82 C121 102 105 116 85 120'/%3E%3Cpath d='M70 152 C86 138 103 132 120 136 C112 153 94 162 75 161'/%3E%3C/g%3E%3Cg fill='%23D8B56B' opacity='.72'%3E%3Ccircle cx='35' cy='42' r='5'/%3E%3Ccircle cx='20' cy='80' r='4.5'/%3E%3Ccircle cx='14' cy='122' r='4.5'/%3E%3Ccircle cx='69' cy='16' r='4.5'/%3E%3Ccircle cx='124' cy='82' r='4.8'/%3E%3Ccircle cx='120' cy='136' r='4.8'/%3E%3C/g%3E%3Cg fill='%23EFE5D4' stroke='%238B6A36' stroke-width='1.4' opacity='.90'%3E%3Cellipse cx='42' cy='55' rx='9' ry='15' transform='rotate(-42 42 55)'/%3E%3Cellipse cx='52' cy='60' rx='8' ry='13' transform='rotate(32 52 60)'/%3E%3Cellipse cx='44' cy='66' rx='7' ry='12' transform='rotate(90 44 66)'/%3E%3Ccircle cx='46' cy='61' r='3.5' fill='%23D4AF6A'/%3E%3Cellipse cx='92' cy='100' rx='8' ry='13' transform='rotate(35 92 100)'/%3E%3Cellipse cx='102' cy='103' rx='7' ry='12' transform='rotate(-38 102 103)'/%3E%3Cellipse cx='97' cy='111' rx='7' ry='11' transform='rotate(88 97 111)'/%3E%3Ccircle cx='97' cy='105' r='3.3' fill='%23D4AF6A'/%3E%3C/g%3E%3C/svg%3E") !important;
-}
-
-/* right botanical branch */
-.heroContent::after,
-.heroPhoto::after {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 130 230'%3E%3Cg transform='translate(130 0) scale(-1 1)'%3E%3Cg fill='none' stroke='%238B6A36' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round' opacity='.82'%3E%3Cpath d='M78 216 C55 172 48 126 72 72 C82 49 94 30 110 14'/%3E%3Cpath d='M70 92 C52 78 39 62 35 42 C55 45 70 57 76 78'/%3E%3Cpath d='M62 129 C42 117 27 101 20 80 C43 81 60 95 68 114'/%3E%3Cpath d='M60 166 C40 157 24 142 14 122 C37 120 56 132 66 150'/%3E%3Cpath d='M82 63 C68 47 63 32 69 16 C86 24 95 40 93 58'/%3E%3Cpath d='M77 111 C91 93 106 83 124 82 C121 102 105 116 85 120'/%3E%3Cpath d='M70 152 C86 138 103 132 120 136 C112 153 94 162 75 161'/%3E%3C/g%3E%3Cg fill='%23D8B56B' opacity='.72'%3E%3Ccircle cx='35' cy='42' r='5'/%3E%3Ccircle cx='20' cy='80' r='4.5'/%3E%3Ccircle cx='14' cy='122' r='4.5'/%3E%3Ccircle cx='69' cy='16' r='4.5'/%3E%3Ccircle cx='124' cy='82' r='4.8'/%3E%3Ccircle cx='120' cy='136' r='4.8'/%3E%3C/g%3E%3Cg fill='%23EFE5D4' stroke='%238B6A36' stroke-width='1.4' opacity='.90'%3E%3Cellipse cx='42' cy='55' rx='9' ry='15' transform='rotate(-42 42 55)'/%3E%3Cellipse cx='52' cy='60' rx='8' ry='13' transform='rotate(32 52 60)'/%3E%3Cellipse cx='44' cy='66' rx='7' ry='12' transform='rotate(90 44 66)'/%3E%3Ccircle cx='46' cy='61' r='3.5' fill='%23D4AF6A'/%3E%3Cellipse cx='92' cy='100' rx='8' ry='13' transform='rotate(35 92 100)'/%3E%3Cellipse cx='102' cy='103' rx='7' ry='12' transform='rotate(-38 102 103)'/%3E%3Cellipse cx='97' cy='111' rx='7' ry='11' transform='rotate(88 97 111)'/%3E%3Ccircle cx='97' cy='105' r='3.3' fill='%23D4AF6A'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") !important;
-}
-
-.heroContent::before {
-  left: max(4px, env(safe-area-inset-left)) !important;
-  top: 8px !important;
-  transform: rotate(-6deg) !important;
-}
-.heroContent::after {
-  right: max(4px, env(safe-area-inset-right)) !important;
-  top: 8px !important;
-  transform: rotate(6deg) !important;
-}
-
-.heroPhoto::before {
-  left: -4px !important;
-  bottom: 8px !important;
-  transform: rotate(-10deg) !important;
-  opacity: .58 !important;
-}
-.heroPhoto::after {
-  right: -4px !important;
-  bottom: 8px !important;
-  transform: rotate(10deg) !important;
-  opacity: .58 !important;
-}
-
-@media (min-width: 760px) {
-  .heroContent::before,
-  .heroContent::after {
-    width: 135px !important;
-    height: 235px !important;
-    top: 44px !important;
-    opacity: .54 !important;
-  }
-  .heroContent::before { left: 20px !important; }
-  .heroContent::after { right: 20px !important; }
-  .heroPhoto::before,
-  .heroPhoto::after {
-    width: 160px !important;
-    height: 275px !important;
-    bottom: 20px !important;
-    opacity: .46 !important;
-  }
+.venueContent .sectionTitle {
+  font-size: clamp(1.75rem, 6vw, 2.7rem) !important;
+  line-height: .98 !important;
+  letter-spacing: 0 !important;
+  max-width: 100% !important;
+  width: 100% !important;
 }
 
 @media (max-width: 380px) {
-  .day { font-size: 72px !important; }
-  .countItem strong { font-size: 24px !important; }
-  .heroContent::before,
-  .heroContent::after {
-    width: 74px !important;
-    height: 132px !important;
-    opacity: .52 !important;
-  }
+  .day { font-size: 76px !important; }
+  .year { font-size: 16px !important; }
+  .countItem { min-height: 76px !important; padding: 8px 2px !important; }
+  .countItem strong { font-size: 25px !important; }
+  .countItem span { font-size: 7px !important; }
+  .venueContent .sectionTitle { font-size: 1.82rem !important; }
 }
 
 
-/* === v15000: venue image moved into Save the Date background === */
-.venuePhoto{display:none!important;}
-
-.dateRevealVenueBg{
-  position:relative;
-  overflow:hidden;
-  min-height:100svh;
-  background-image:
-    linear-gradient(180deg, rgba(246,239,227,.80), rgba(246,239,227,.88)),
-    linear-gradient(180deg, rgba(216,200,181,.05), rgba(216,200,181,.68)), url('data:image/jpeg;
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
+/* === V15000: Move venue image to Save the Date background === */
+.dateRevealWithVenueBg {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--sand);
+  background-image: linear-gradient(180deg, rgba(246,239,227,.72), rgba(246,239,227,.84)), linear-gradient(180deg, rgba(216,200,181,.05), rgba(216,200,181,.68)), url('data:image/jpeg;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
-
-.dateRevealVenueBg::before{
-  content:"";
-  position:absolute;
-  inset:0;
+.dateRevealWithVenueBg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background:
-    radial-gradient(circle at 50% 20%, rgba(255,255,255,.35), transparent 34%),
-    linear-gradient(180deg, rgba(16,43,39,.12), rgba(246,239,227,.72));
-  pointer-events:none;
-  z-index:0;
+    radial-gradient(circle at 50% 28%, rgba(255,255,255,.35), transparent 38%),
+    linear-gradient(180deg, rgba(246,239,227,.70), rgba(231,216,195,.86));
 }
-
-.dateRevealVenueBg .sectionInner{
-  position:relative;
-  z-index:1;
-  background:rgba(246,239,227,.72);
-  border:1px solid rgba(139,106,54,.22);
-  border-radius:34px;
-  box-shadow:0 24px 70px rgba(72,52,30,.16);
-  backdrop-filter:blur(4px);
-  -webkit-backdrop-filter:blur(4px);
-  padding-top:42px;
-  padding-bottom:42px;
+.dateRevealWithVenueBg .sectionInner {
+  position: relative;
+  z-index: 1;
+  background: rgba(246,239,227,.72);
+  border: 1px solid rgba(139,106,54,.26);
+  border-radius: 28px;
+  box-shadow: 0 24px 70px rgba(72,52,30,.14);
+  backdrop-filter: blur(4px);
 }
-
-@media (max-width:700px){
-  .dateRevealVenueBg{
-    min-height:100svh;
-    padding-left:16px;
-    padding-right:16px;
+.venuePhoto {
+  display: none !important;
+}
+@media (min-width:760px) {
+  .venue {
+    display: block;
+    min-height: auto;
   }
-  .dateRevealVenueBg .sectionInner{
-    width:100%;
-    padding:34px 16px;
+  .venueContent {
+    min-height: 58vh;
   }
 }
