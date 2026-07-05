@@ -558,3 +558,41 @@ footer { padding:32px 20px 42px; text-align:center; color:var(--soft); letter-sp
   .venue { display: block; min-height: auto; }
   .venueContent { min-height: 58vh; }
 }
+
+/* === V17000: Move image background from Save the Date to Countdown === */
+.dateRevealWithVenueBg {
+  background-image: none !important;
+  background: linear-gradient(135deg, #F8F1E6 0%, #EADBC4 52%, #D5C09F 100%) !important;
+}
+
+.countSection {
+  position: relative !important;
+  isolation: isolate !important;
+  overflow: hidden !important;
+  background-color: var(--sand) !important;
+  background-image: linear-gradient(180deg, rgba(246,239,227,.55), rgba(246,239,227,.74)), linear-gradient(180deg, rgba(216,200,181,.05), rgba(216,200,181,.68)), url('data:image/jpeg !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+.countSection::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: rgba(246,239,227,.72) !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+
+.countSection .sectionInner {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.countSection .eyebrow,
+.countSection .sectionTitle,
+.countSection .countdown {
+  position: relative !important;
+  z-index: 1 !important;
+}
