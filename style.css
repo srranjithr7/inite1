@@ -559,8 +559,86 @@ footer { padding:32px 20px 42px; text-align:center; color:var(--soft); letter-sp
   .venueContent { min-height: 58vh; }
 }
 
-/* === v25000: uploaded hands image for countdown, full-image layout === */
+/* === v26000: original first photo + blended natural bouquet styling === */
 
+/* First page hero uses uploaded original full photo */
+.hero {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.heroPhoto {
+  background-image:
+    linear-gradient(180deg, rgba(246,239,227,.02), rgba(246,239,227,.32)),
+    url("hero-original.jpeg") !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Soft natural bouquet / botanical artwork blended into first page */
+.hero::before,
+.hero::after {
+  content: "" !important;
+  position: absolute !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+  opacity: .55 !important;
+  filter: blur(.1px) !important;
+}
+
+.hero::before {
+  top: 18px !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 170px !important;
+  background:
+    radial-gradient(ellipse at 18% 42%, rgba(255,255,255,.70) 0 7%, transparent 8%),
+    radial-gradient(ellipse at 25% 28%, rgba(226,198,150,.46) 0 5%, transparent 6%),
+    radial-gradient(ellipse at 75% 28%, rgba(226,198,150,.42) 0 5%, transparent 6%),
+    radial-gradient(ellipse at 82% 42%, rgba(255,255,255,.66) 0 7%, transparent 8%),
+    radial-gradient(ellipse at 32% 52%, rgba(125,115,83,.22) 0 3%, transparent 4%),
+    radial-gradient(ellipse at 68% 52%, rgba(125,115,83,.22) 0 3%, transparent 4%),
+    linear-gradient(105deg, transparent 0 17%, rgba(139,106,54,.22) 18%, transparent 19% 100%),
+    linear-gradient(75deg, transparent 0 81%, rgba(139,106,54,.22) 82%, transparent 83% 100%);
+  mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,.9) 44%, transparent 100%);
+}
+
+.hero::after {
+  left: 16px !important;
+  right: 16px !important;
+  bottom: 22px !important;
+  height: 120px !important;
+  background:
+    radial-gradient(ellipse at 7% 30%, rgba(255,255,255,.52) 0 10%, transparent 11%),
+    radial-gradient(ellipse at 13% 50%, rgba(218,194,145,.36) 0 8%, transparent 9%),
+    radial-gradient(ellipse at 91% 30%, rgba(255,255,255,.52) 0 10%, transparent 11%),
+    radial-gradient(ellipse at 86% 50%, rgba(218,194,145,.36) 0 8%, transparent 9%),
+    linear-gradient(115deg, transparent 0 11%, rgba(139,106,54,.18) 12%, transparent 13% 100%),
+    linear-gradient(65deg, transparent 0 87%, rgba(139,106,54,.18) 88%, transparent 89% 100%);
+  mask-image: linear-gradient(0deg, #000 0%, rgba(0,0,0,.82) 48%, transparent 100%);
+}
+
+.heroContent,
+.heroPhoto {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Make invite text blend over the photo cleanly */
+.heroContent {
+  background: linear-gradient(180deg, rgba(246,239,227,.76), rgba(246,239,227,.46), rgba(246,239,227,.08)) !important;
+}
+
+.heroContent .intro {
+  display: inline-block !important;
+  padding: 8px 14px !important;
+  border-radius: 999px !important;
+  background: rgba(246,239,227,.38) !important;
+  backdrop-filter: blur(1px) !important;
+}
+
+/* Save the Date remains plain */
 .dateReveal,
 .dateRevealWithVenueBg {
   background-image: none !important;
@@ -573,7 +651,7 @@ footer { padding:32px 20px 42px; text-align:center; color:var(--soft); letter-sp
   display:none !important;
 }
 
-/* Countdown: uploaded portrait image as full background */
+/* Countdown keeps uploaded hands image full background */
 .countSection.countdownPhotoBg {
   position: relative !important;
   overflow: hidden !important;
@@ -647,7 +725,7 @@ footer { padding:32px 20px 42px; text-align:center; color:var(--soft); letter-sp
   border-left:0 !important;
 }
 
-/* Venue: same full-image layout */
+/* Venue full-image layout */
 .venue {
   position:relative !important;
   overflow:hidden !important;
@@ -716,7 +794,41 @@ footer { padding:32px 20px 42px; text-align:center; color:var(--soft); letter-sp
   border-color:rgba(139,106,54,.30) !important;
 }
 
+@media (min-width:760px) {
+  .hero {
+    min-height: 100vh !important;
+    display:grid !important;
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .heroContent {
+    min-height:100vh !important;
+  }
+
+  .heroPhoto {
+    min-height:100vh !important;
+    height:auto !important;
+    width:100% !important;
+    max-width:none !important;
+    margin:0 !important;
+    border-radius:0 !important;
+  }
+}
+
 @media (max-width:760px) {
+  .heroPhoto {
+    width: calc(100% - 32px) !important;
+    height: 560px !important;
+    max-width: 420px !important;
+    border-radius: 30px !important;
+    background-position: center top !important;
+  }
+
+  .heroContent {
+    padding-top: 34px !important;
+    padding-bottom: 16px !important;
+  }
+
   .countSection.countdownPhotoBg {
     min-height:86vh !important;
     padding:72px 14px !important;
