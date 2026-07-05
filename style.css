@@ -559,141 +559,174 @@ footer { padding:32px 20px 42px; text-align:center; color:var(--soft); letter-sp
   .venueContent { min-height: 58vh; }
 }
 
-/* === v27000: clean scratch section + improved natural floral hero artwork === */
+/* === v28000: cleaner cover + grand floral hero + fixed hero fit + longer scratch === */
 
-/* First page hero uses uploaded original full photo */
+/* Front page cleanup */
+.coverText {
+  display: none !important;
+}
+
+.coverCard {
+  padding-top: 28px !important;
+  padding-bottom: 28px !important;
+}
+
+/* Hero photo: fit full right side with no empty gap */
 .hero {
   position: relative !important;
   overflow: hidden !important;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255,255,255,.55), transparent 24%),
+    linear-gradient(135deg, #F8F1E6 0%, #EADBC4 58%, #D5C09F 100%) !important;
 }
 
 .heroPhoto {
+  position: relative !important;
+  z-index: 1 !important;
   background-image:
-    linear-gradient(180deg, rgba(246,239,227,.00), rgba(246,239,227,.22)),
+    linear-gradient(180deg, rgba(246,239,227,.00), rgba(246,239,227,.16)),
     url("hero-original.jpeg") !important;
   background-size: cover !important;
   background-position: center top !important;
   background-repeat: no-repeat !important;
 }
 
-/* More natural floral side artwork: soft ivory/gold botanical clusters */
-.heroFloralLayer,
+/* Grand floral bouquet style - dense, soft, wedding-like, no childish stem pattern */
 .hero::before,
 .hero::after,
 .heroPhoto::before,
-.heroPhoto::after {
+.heroPhoto::after,
+.cover::before,
+.cover::after {
+  content: "" !important;
+  position: absolute !important;
   pointer-events: none !important;
+  z-index: 4 !important;
+  opacity: .88 !important;
+  filter: drop-shadow(0 18px 34px rgba(139,106,54,.14)) !important;
 }
 
-.hero::before,
-.hero::after {
-  content: "" !important;
-  position: absolute !important;
-  z-index: 2 !important;
-  opacity: .82 !important;
-  filter: drop-shadow(0 12px 28px rgba(139,106,54,.10)) !important;
+/* Cover page grand floral corners */
+.cover::before {
+  width: 260px !important;
+  height: 260px !important;
+  top: -42px !important;
+  left: -48px !important;
+  background:
+    radial-gradient(circle at 38% 36%, rgba(255,255,255,.96) 0 8%, transparent 9%),
+    radial-gradient(circle at 52% 28%, rgba(250,241,220,.92) 0 7%, transparent 8%),
+    radial-gradient(circle at 28% 52%, rgba(255,255,255,.82) 0 7%, transparent 8%),
+    radial-gradient(circle at 56% 54%, rgba(232,205,154,.62) 0 6%, transparent 7%),
+    radial-gradient(ellipse at 34% 70%, rgba(115,132,92,.28) 0 9%, transparent 10%),
+    radial-gradient(ellipse at 66% 68%, rgba(115,132,92,.22) 0 8%, transparent 9%),
+    conic-gradient(from 18deg at 50% 50%, transparent 0 17%, rgba(139,106,54,.22) 18% 20%, transparent 21% 38%, rgba(139,106,54,.16) 39% 41%, transparent 42% 100%);
+  border-radius: 50%;
+  mask-image: radial-gradient(circle at 45% 45%, #000 0 55%, transparent 76%);
+}
+.cover::after {
+  width: 280px !important;
+  height: 280px !important;
+  top: -44px !important;
+  right: -58px !important;
+  background:
+    radial-gradient(circle at 62% 36%, rgba(255,255,255,.96) 0 8%, transparent 9%),
+    radial-gradient(circle at 48% 28%, rgba(250,241,220,.92) 0 7%, transparent 8%),
+    radial-gradient(circle at 72% 52%, rgba(255,255,255,.82) 0 7%, transparent 8%),
+    radial-gradient(circle at 44% 54%, rgba(232,205,154,.62) 0 6%, transparent 7%),
+    radial-gradient(ellipse at 66% 70%, rgba(115,132,92,.28) 0 9%, transparent 10%),
+    radial-gradient(ellipse at 34% 68%, rgba(115,132,92,.22) 0 8%, transparent 9%),
+    conic-gradient(from 200deg at 50% 50%, transparent 0 17%, rgba(139,106,54,.22) 18% 20%, transparent 21% 38%, rgba(139,106,54,.16) 39% 41%, transparent 42% 100%);
+  border-radius: 50%;
+  mask-image: radial-gradient(circle at 55% 45%, #000 0 55%, transparent 76%);
 }
 
-/* Top-left bouquet */
+/* Hero page grand floral top clusters */
 .hero::before {
-  width: 170px !important;
-  height: 220px !important;
-  left: -14px !important;
-  top: 16px !important;
+  width: 300px !important;
+  height: 310px !important;
+  top: -62px !important;
+  left: -70px !important;
   background:
-    radial-gradient(ellipse at 34% 22%, rgba(255,255,255,.90) 0 10%, transparent 11%),
-    radial-gradient(ellipse at 48% 32%, rgba(255,255,255,.82) 0 8%, transparent 9%),
-    radial-gradient(ellipse at 25% 46%, rgba(255,255,255,.75) 0 7%, transparent 8%),
-    radial-gradient(ellipse at 56% 52%, rgba(232,205,154,.55) 0 6%, transparent 7%),
-    radial-gradient(ellipse at 40% 68%, rgba(156,139,91,.28) 0 4%, transparent 5%),
-    linear-gradient(130deg, transparent 0 35%, rgba(139,106,54,.28) 36%, transparent 37% 100%),
-    linear-gradient(110deg, transparent 0 47%, rgba(139,106,54,.18) 48%, transparent 49% 100%),
-    linear-gradient(70deg, transparent 0 53%, rgba(139,106,54,.16) 54%, transparent 55% 100%);
-  border-radius: 60% 40% 70% 30%;
-  mask-image: radial-gradient(ellipse at 35% 40%, #000 0 52%, transparent 76%);
+    radial-gradient(circle at 42% 34%, rgba(255,255,255,.98) 0 8%, transparent 9%),
+    radial-gradient(circle at 58% 28%, rgba(255,250,237,.94) 0 7%, transparent 8%),
+    radial-gradient(circle at 31% 50%, rgba(255,255,255,.86) 0 7%, transparent 8%),
+    radial-gradient(circle at 62% 54%, rgba(232,205,154,.62) 0 6%, transparent 7%),
+    radial-gradient(circle at 46% 65%, rgba(255,255,255,.72) 0 5%, transparent 6%),
+    radial-gradient(ellipse at 30% 72%, rgba(94,126,88,.28) 0 9%, transparent 10%),
+    radial-gradient(ellipse at 68% 70%, rgba(94,126,88,.22) 0 8%, transparent 9%),
+    conic-gradient(from 30deg at 50% 50%, transparent 0 13%, rgba(139,106,54,.24) 14% 16%, transparent 17% 34%, rgba(139,106,54,.18) 35% 37%, transparent 38% 100%);
+  border-radius: 50%;
+  mask-image: radial-gradient(circle at 48% 46%, #000 0 57%, transparent 78%);
 }
 
-/* Top-right bouquet */
 .hero::after {
-  width: 180px !important;
-  height: 230px !important;
-  right: -20px !important;
-  top: 8px !important;
+  width: 320px !important;
+  height: 320px !important;
+  top: -68px !important;
+  right: -82px !important;
   background:
-    radial-gradient(ellipse at 68% 20%, rgba(255,255,255,.90) 0 10%, transparent 11%),
-    radial-gradient(ellipse at 52% 32%, rgba(255,255,255,.80) 0 8%, transparent 9%),
-    radial-gradient(ellipse at 76% 45%, rgba(255,255,255,.72) 0 7%, transparent 8%),
-    radial-gradient(ellipse at 44% 56%, rgba(232,205,154,.55) 0 6%, transparent 7%),
-    radial-gradient(ellipse at 60% 70%, rgba(156,139,91,.28) 0 4%, transparent 5%),
-    linear-gradient(50deg, transparent 0 42%, rgba(139,106,54,.28) 43%, transparent 44% 100%),
-    linear-gradient(72deg, transparent 0 52%, rgba(139,106,54,.18) 53%, transparent 54% 100%),
-    linear-gradient(120deg, transparent 0 50%, rgba(139,106,54,.16) 51%, transparent 52% 100%);
-  border-radius: 40% 60% 30% 70%;
-  mask-image: radial-gradient(ellipse at 65% 40%, #000 0 52%, transparent 76%);
+    radial-gradient(circle at 58% 34%, rgba(255,255,255,.98) 0 8%, transparent 9%),
+    radial-gradient(circle at 42% 28%, rgba(255,250,237,.94) 0 7%, transparent 8%),
+    radial-gradient(circle at 72% 50%, rgba(255,255,255,.86) 0 7%, transparent 8%),
+    radial-gradient(circle at 38% 54%, rgba(232,205,154,.62) 0 6%, transparent 7%),
+    radial-gradient(circle at 54% 65%, rgba(255,255,255,.72) 0 5%, transparent 6%),
+    radial-gradient(ellipse at 70% 72%, rgba(94,126,88,.28) 0 9%, transparent 10%),
+    radial-gradient(ellipse at 32% 70%, rgba(94,126,88,.22) 0 8%, transparent 9%),
+    conic-gradient(from 210deg at 50% 50%, transparent 0 13%, rgba(139,106,54,.24) 14% 16%, transparent 17% 34%, rgba(139,106,54,.18) 35% 37%, transparent 38% 100%);
+  border-radius: 50%;
+  mask-image: radial-gradient(circle at 52% 46%, #000 0 57%, transparent 78%);
 }
 
-/* Florals blended directly on the photo frame */
-.heroPhoto {
-  position: relative !important;
-}
-
-.heroPhoto::before,
-.heroPhoto::after {
-  content: "" !important;
-  position: absolute !important;
-  z-index: 2 !important;
-  opacity: .68 !important;
-}
-
+/* Floral directly blended over photo sides */
 .heroPhoto::before {
-  left: -16px !important;
-  top: 22px !important;
-  width: 135px !important;
-  height: 190px !important;
+  width: 210px !important;
+  height: 260px !important;
+  left: -48px !important;
+  top: 24px !important;
   background:
-    radial-gradient(ellipse at 30% 22%, rgba(255,255,255,.82) 0 9%, transparent 10%),
-    radial-gradient(ellipse at 50% 35%, rgba(245,234,207,.72) 0 7%, transparent 8%),
-    radial-gradient(ellipse at 25% 55%, rgba(225,197,145,.42) 0 6%, transparent 7%),
-    linear-gradient(132deg, transparent 0 44%, rgba(139,106,54,.22) 45%, transparent 46% 100%),
-    linear-gradient(102deg, transparent 0 55%, rgba(139,106,54,.16) 56%, transparent 57% 100%);
-  mask-image: radial-gradient(ellipse at 35% 38%, #000 0 52%, transparent 75%);
+    radial-gradient(circle at 40% 28%, rgba(255,255,255,.92) 0 9%, transparent 10%),
+    radial-gradient(circle at 58% 38%, rgba(255,250,237,.82) 0 7%, transparent 8%),
+    radial-gradient(circle at 32% 54%, rgba(232,205,154,.52) 0 6%, transparent 7%),
+    radial-gradient(ellipse at 48% 76%, rgba(94,126,88,.28) 0 10%, transparent 11%),
+    conic-gradient(from 35deg at 48% 52%, transparent 0 18%, rgba(139,106,54,.18) 19% 21%, transparent 22% 100%);
+  border-radius: 50%;
+  mask-image: radial-gradient(circle at 46% 44%, #000 0 55%, transparent 76%);
 }
-
 .heroPhoto::after {
-  right: -18px !important;
-  top: 26px !important;
-  width: 145px !important;
-  height: 190px !important;
+  width: 230px !important;
+  height: 270px !important;
+  right: -58px !important;
+  top: 20px !important;
   background:
-    radial-gradient(ellipse at 72% 22%, rgba(255,255,255,.82) 0 9%, transparent 10%),
-    radial-gradient(ellipse at 52% 35%, rgba(245,234,207,.72) 0 7%, transparent 8%),
-    radial-gradient(ellipse at 76% 55%, rgba(225,197,145,.42) 0 6%, transparent 7%),
-    linear-gradient(48deg, transparent 0 44%, rgba(139,106,54,.22) 45%, transparent 46% 100%),
-    linear-gradient(78deg, transparent 0 55%, rgba(139,106,54,.16) 56%, transparent 57% 100%);
-  mask-image: radial-gradient(ellipse at 65% 38%, #000 0 52%, transparent 75%);
+    radial-gradient(circle at 60% 28%, rgba(255,255,255,.92) 0 9%, transparent 10%),
+    radial-gradient(circle at 42% 38%, rgba(255,250,237,.82) 0 7%, transparent 8%),
+    radial-gradient(circle at 68% 54%, rgba(232,205,154,.52) 0 6%, transparent 7%),
+    radial-gradient(ellipse at 52% 76%, rgba(94,126,88,.28) 0 10%, transparent 11%),
+    conic-gradient(from 210deg at 52% 52%, transparent 0 18%, rgba(139,106,54,.18) 19% 21%, transparent 22% 100%);
+  border-radius: 50%;
+  mask-image: radial-gradient(circle at 54% 44%, #000 0 55%, transparent 76%);
 }
 
 .heroContent,
 .heroPhoto {
   position: relative !important;
-  z-index: 1 !important;
 }
 
-/* Blend invitation line with hero */
 .heroContent {
+  z-index: 3 !important;
   background:
-    linear-gradient(180deg, rgba(246,239,227,.78), rgba(246,239,227,.44), rgba(246,239,227,.08)) !important;
+    linear-gradient(180deg, rgba(246,239,227,.82), rgba(246,239,227,.48), rgba(246,239,227,.08)) !important;
 }
 
 .heroContent .intro {
   display: inline-block !important;
   padding: 8px 14px !important;
   border-radius: 999px !important;
-  background: rgba(246,239,227,.42) !important;
+  background: rgba(246,239,227,.44) !important;
   backdrop-filter: blur(1px) !important;
 }
 
-/* Scratch section: remove extra labels, keep only foil text */
+/* Scratch section text cleanup and bigger scratch foil */
 .dateReveal,
 .dateRevealWithVenueBg {
   background-image: none !important;
@@ -708,7 +741,7 @@ footer { padding:32px 20px 42px; text-align:center; color:var(--soft); letter-sp
 
 .dateHeadline {
   display: block !important;
-  margin-bottom: 30px !important;
+  margin-bottom: 34px !important;
   line-height: .95 !important;
 }
 
@@ -735,9 +768,18 @@ footer { padding:32px 20px 42px; text-align:center; color:var(--soft); letter-sp
   display: none !important;
 }
 
-/* Make scratch card clean after text removal */
 .scratchBox {
-  margin-top: 18px !important;
+  width: min(92vw, 620px) !important;
+  min-height: 360px !important;
+  margin-top: 20px !important;
+}
+
+.dateCard {
+  min-height: 330px !important;
+}
+
+#scratchCanvas {
+  inset: 12px !important;
 }
 
 /* Countdown keeps uploaded hands image full background */
@@ -888,6 +930,7 @@ footer { padding:32px 20px 42px; text-align:center; color:var(--soft); letter-sp
     min-height: 100vh !important;
     display:grid !important;
     grid-template-columns: 1fr 1fr !important;
+    align-items: stretch !important;
   }
 
   .heroContent {
@@ -896,33 +939,45 @@ footer { padding:32px 20px 42px; text-align:center; color:var(--soft); letter-sp
 
   .heroPhoto {
     min-height:100vh !important;
-    height:auto !important;
+    height:100vh !important;
     width:100% !important;
     max-width:none !important;
     margin:0 !important;
     border-radius:0 !important;
+    justify-self:stretch !important;
+    align-self:stretch !important;
+    box-shadow:none !important;
   }
 }
 
 @media (max-width:760px) {
+  .cover::before,
+  .cover::after {
+    width: 190px !important;
+    height: 190px !important;
+    opacity: .72 !important;
+  }
+
   .hero::before {
-    width: 145px !important;
-    height: 180px !important;
-    opacity: .70 !important;
+    width: 210px !important;
+    height: 230px !important;
+    opacity: .75 !important;
   }
 
   .hero::after {
-    width: 150px !important;
-    height: 185px !important;
-    opacity: .70 !important;
+    width: 220px !important;
+    height: 240px !important;
+    opacity: .75 !important;
   }
 
   .heroPhoto {
-    width: calc(100% - 32px) !important;
-    height: 560px !important;
-    max-width: 420px !important;
+    width: calc(100% - 28px) !important;
+    height: 580px !important;
+    max-width: none !important;
     border-radius: 30px !important;
     background-position: center top !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 
   .heroContent {
@@ -937,6 +992,15 @@ footer { padding:32px 20px 42px; text-align:center; color:var(--soft); letter-sp
   .dateHeadline span {
     font-size: .72rem !important;
     letter-spacing: .15em !important;
+  }
+
+  .scratchBox {
+    width: min(94vw, 560px) !important;
+    min-height: 340px !important;
+  }
+
+  .dateCard {
+    min-height: 310px !important;
   }
 
   .countSection.countdownPhotoBg {
