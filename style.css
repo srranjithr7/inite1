@@ -253,185 +253,7 @@ footer { padding:32px 20px 42px; text-align:center; color:var(--soft); letter-sp
 }
 
 
-/* === FINAL MOBILE POLISH: blended hero photo + floral sides + one-line countdown === */
-.hero,
-.heroContent,
-.heroPhoto {
-  position: relative;
-}
-
-.heroContent {
-  overflow: visible;
-}
-
-.heroContent::before,
-.heroContent::after {
-  content: "✦\A❦\A✿";
-  white-space: pre;
-  position: absolute;
-  top: 18px;
-  color: rgba(139,106,54,.34);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(26px, 8vw, 46px);
-  line-height: .95;
-  letter-spacing: .06em;
-  pointer-events: none;
-  z-index: 0;
-  filter: blur(.1px);
-}
-
-.heroContent::before {
-  left: 10px;
-  transform: rotate(-28deg);
-}
-
-.heroContent::after {
-  right: 10px;
-  transform: scaleX(-1) rotate(-28deg);
-}
-
-.heroContent > * {
-  position: relative;
-  z-index: 1;
-}
-
-.heroPhoto {
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  overflow: visible !important;
-  width: 100% !important;
-  max-width: none !important;
-  margin: 14px 0 52px !important;
-  background-position: center 36% !important;
-  background-size: cover !important;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 78%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 78%, transparent 100%);
-}
-
-.heroPhoto::before,
-.heroPhoto::after {
-  content: "❦\A✿\A❧";
-  white-space: pre;
-  position: absolute;
-  top: 7%;
-  color: rgba(139,106,54,.28);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(34px, 12vw, 58px);
-  line-height: .92;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.heroPhoto::before {
-  left: 10px;
-  transform: rotate(-18deg);
-}
-
-.heroPhoto::after {
-  right: 10px;
-  transform: scaleX(-1) rotate(-18deg);
-}
-
-.countSection .sectionInner {
-  padding-left: 12px !important;
-  padding-right: 12px !important;
-}
-
-.countdown {
-  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-  gap: 7px !important;
-  width: 100% !important;
-  max-width: 520px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-.countItem {
-  min-height: 88px !important;
-  border-radius: 16px !important;
-  padding: 10px 4px !important;
-}
-
-.countItem strong {
-  font-size: clamp(28px, 9vw, 44px) !important;
-}
-
-.countItem span {
-  margin-top: 6px !important;
-  letter-spacing: .05em !important;
-  font-size: clamp(8px, 2.4vw, 10px) !important;
-}
-
-@media (max-width: 380px) {
-  .heroContent::before,
-  .heroContent::after {
-    top: 10px;
-    font-size: 25px;
-  }
-
-  .smallLogo {
-    width: 78px !important;
-    height: 78px !important;
-  }
-
-  .heroPhoto {
-    height: 345px !important;
-    margin-top: 8px !important;
-  }
-
-  .countdown {
-    gap: 5px !important;
-  }
-
-  .countItem {
-    min-height: 76px !important;
-    border-radius: 13px !important;
-    padding: 8px 2px !important;
-  }
-
-  .countItem strong {
-    font-size: 28px !important;
-  }
-
-  .countItem span {
-    font-size: 7px !important;
-    letter-spacing: .03em !important;
-  }
-}
-
-/* === VENUE TITLE FIT FIX - do not remove === */
-.venueContent {
-  max-width: 100% !important;
-  overflow: hidden !important;
-}
-
-.venueContent .sectionTitle {
-  font-size: clamp(2.15rem, 7.4vw, 3.25rem) !important;
-  line-height: 0.92 !important;
-  letter-spacing: 0.005em !important;
-  max-width: 100% !important;
-  width: 100% !important;
-  overflow-wrap: normal !important;
-  word-break: normal !important;
-}
-
-@media (max-width: 430px) {
-  .venueContent .sectionTitle {
-    font-size: clamp(2rem, 8.2vw, 2.85rem) !important;
-    line-height: 0.94 !important;
-  }
-}
-
-@media (max-width: 380px) {
-  .venueContent .sectionTitle {
-    font-size: 2.35rem !important;
-  }
-}
-
-
-/* === FINAL FLORAL HOME PAGE POLISH ===
-   Adds soft line-art florals near logo and blended couple photo.
-   Keeps mobile layout and prevents horizontal overflow. */
+/* === FINAL POLISH: natural floral artwork + date font + venue fit === */
 .hero,
 .heroContent,
 .heroPhoto{
@@ -445,35 +267,34 @@ footer { padding:32px 20px 42px; text-align:center; color:var(--soft); letter-sp
 .heroContent{
   padding-top:28px !important;
   isolation:isolate;
+  overflow:visible !important;
 }
 
-/* soft floral corners near the logo */
+/* Natural floral artwork around the logo */
 .heroContent::before,
 .heroContent::after{
   content:"" !important;
   position:absolute !important;
-  top:8px !important;
-  width:118px !important;
-  height:158px !important;
-  opacity:.26 !important;
+  top:-10px !important;
+  width:140px !important;
+  height:170px !important;
+  opacity:.42 !important;
   pointer-events:none !important;
   z-index:0 !important;
+  background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27220%27%20height%3D%27230%27%20viewBox%3D%270%200%20220%20230%27%3E%0A%20%20%3Cdefs%3E%0A%20%20%20%20%3CradialGradient%20id%3D%27petal%27%20cx%3D%2750%25%27%20cy%3D%2742%25%27%20r%3D%2765%25%27%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%270%27%20stop-color%3D%27%23F9EED8%27%20stop-opacity%3D%27.95%27/%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%27.72%27%20stop-color%3D%27%23D8B676%27%20stop-opacity%3D%27.62%27/%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%271%27%20stop-color%3D%27%23A87935%27%20stop-opacity%3D%27.34%27/%3E%0A%20%20%20%20%3C/radialGradient%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%27stem%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%271%27%20y2%3D%271%27%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%270%27%20stop-color%3D%27%23B88642%27%20stop-opacity%3D%27.75%27/%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%271%27%20stop-color%3D%27%236F5328%27%20stop-opacity%3D%27.38%27/%3E%0A%20%20%20%20%3C/linearGradient%3E%0A%20%20%3C/defs%3E%0A%20%20%3Cg%20fill%3D%27none%27%20stroke%3D%27url%28%23stem%29%27%20stroke-width%3D%271.45%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%0A%20%20%20%20%3Cpath%20d%3D%27M117%20213C99%20165%2099%20108%20137%2027%27/%3E%0A%20%20%20%20%3Cpath%20d%3D%27M114%20213C102%20173%2075%20139%2031%20113%27/%3E%0A%20%20%20%20%3Cpath%20d%3D%27M122%20170c24-18%2046-25%2068-17%27/%3E%0A%20%20%20%20%3Cpath%20d%3D%27M107%20137c-27-11-52-13-76-4%27/%3E%0A%20%20%20%20%3Cpath%20d%3D%27M128%20105c18-17%2039-24%2062-20%27/%3E%0A%20%20%20%20%3Cpath%20d%3D%27M95%20174c-20%204-39%2015-57%2034%27/%3E%0A%20%20%3C/g%3E%0A%20%20%3Cg%20fill%3D%27url%28%23petal%29%27%20stroke%3D%27%239C763C%27%20stroke-width%3D%27.75%27%20opacity%3D%27.72%27%3E%0A%20%20%20%20%3Cpath%20d%3D%27M145%2040c-20%205-31%2019-32%2041%2023-1%2038-16%2032-41z%27/%3E%0A%20%20%20%20%3Cpath%20d%3D%27M126%20100c-22%206-34%2022-34%2045%2025-2%2041-18%2034-45z%27/%3E%0A%20%20%20%20%3Cpath%20d%3D%27M78%20126c-22-10-42-9-61%204%2018%2016%2041%2016%2061-4z%27/%3E%0A%20%20%20%20%3Cpath%20d%3D%27M61%20194c-20%204-35%2015-45%2035%2023%203%2041-9%2045-35z%27/%3E%0A%20%20%20%20%3Cpath%20d%3D%27M166%20146c19-9%2036-9%2052%201-14%2016-32%2017-52-1z%27/%3E%0A%20%20%3C/g%3E%0A%20%20%3Cg%20fill%3D%27%23C79B52%27%20opacity%3D%27.58%27%3E%0A%20%20%20%20%3Ccircle%20cx%3D%27118%27%20cy%3D%27136%27%20r%3D%273.2%27/%3E%3Ccircle%20cx%3D%27144%27%20cy%3D%2741%27%20r%3D%272.6%27/%3E%3Ccircle%20cx%3D%2779%27%20cy%3D%27126%27%20r%3D%273%27/%3E%0A%20%20%20%20%3Ccircle%20cx%3D%27166%27%20cy%3D%27146%27%20r%3D%272.5%27/%3E%3Ccircle%20cx%3D%2761%27%20cy%3D%27194%27%20r%3D%272.4%27/%3E%0A%20%20%3C/g%3E%0A%20%20%3Cg%20fill%3D%27none%27%20stroke%3D%27%23C79B52%27%20stroke-width%3D%27.85%27%20opacity%3D%27.38%27%3E%0A%20%20%20%20%3Cpath%20d%3D%27M157%2070c17-12%2033-16%2048-12%27/%3E%3Cpath%20d%3D%27M47%2094c-12-14-25-21-40-21%27/%3E%0A%20%20%20%20%3Cpath%20d%3D%27M177%20105c13-4%2025-4%2037%201%27/%3E%0A%20%20%3C/g%3E%0A%3C/svg%3E") !important;
   background-repeat:no-repeat !important;
   background-size:contain !important;
   background-position:center !important;
-  filter:none !important;
-  color:transparent !important;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='210' viewBox='0 0 160 210'%3E%3Cg fill='none' stroke='%238B6A36' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' opacity='.95'%3E%3Cpath d='M91 191C66 139 64 89 108 24'/%3E%3Cpath d='M91 191c-9-28-31-55-67-76'/%3E%3Cpath d='M105 27c-23 7-31 22-28 43 22-2 36-15 28-43z'/%3E%3Cpath d='M85 72c-24 7-36 23-34 45 25-1 41-17 34-45z'/%3E%3Cpath d='M78 126c-22 3-38 16-42 38 24 3 42-10 42-38z'/%3E%3Cpath d='M64 152c-11-18-28-27-50-26 8 21 25 30 50 26z'/%3E%3Cpath d='M75 101c15-18 34-24 56-17-10 22-31 30-56 17z'/%3E%3Cpath d='M89 58c14-15 31-20 50-15-8 19-27 26-50 15z'/%3E%3Cpath d='M43 91c-11-14-27-20-44-17 6 18 22 26 44 17z'/%3E%3Ccircle cx='41' cy='90' r='5'/%3E%3Ccircle cx='76' cy='124' r='4'/%3E%3Cpath d='M114 142c14-6 28-5 42 3-11 11-25 13-42-3z'/%3E%3C/g%3E%3C/svg%3E") !important;
 }
 
 .heroContent::before{
-  left:-18px !important;
-  transform:rotate(-13deg) !important;
+  left:-28px !important;
+  transform:rotate(-8deg) !important;
 }
 
 .heroContent::after{
-  right:-18px !important;
-  transform:scaleX(-1) rotate(-13deg) !important;
+  right:-28px !important;
+  transform:scaleX(-1) rotate(-8deg) !important;
 }
 
 .heroContent > *{
@@ -481,16 +302,15 @@ footer { padding:32px 20px 42px; text-align:center; color:var(--soft); letter-sp
   z-index:1;
 }
 
-/* make the top logo feel like it is sitting in the floral artwork */
 .heroContent .smallLogo{
   margin-top:4px !important;
   margin-bottom:22px !important;
   background:
-    radial-gradient(circle at 50% 48%, rgba(255,255,255,.64), rgba(246,239,227,.30) 58%, transparent 72%),
-    linear-gradient(135deg, rgba(212,175,106,.18), rgba(14,47,43,.04)) !important;
+    radial-gradient(circle at 50% 48%, rgba(255,255,255,.70), rgba(246,239,227,.34) 58%, transparent 73%),
+    linear-gradient(135deg, rgba(212,175,106,.20), rgba(14,47,43,.04)) !important;
 }
 
-/* blended couple image, not a separate card */
+/* Blended couple image, not a separate frame */
 .heroPhoto{
   border-radius:0 !important;
   box-shadow:none !important;
@@ -500,36 +320,77 @@ footer { padding:32px 20px 42px; text-align:center; color:var(--soft); letter-sp
   margin:8px 0 50px !important;
   background-position:center 36% !important;
   background-size:cover !important;
-  -webkit-mask-image:linear-gradient(to bottom, transparent 0%, #000 10%, #000 76%, transparent 100%) !important;
-  mask-image:linear-gradient(to bottom, transparent 0%, #000 10%, #000 76%, transparent 100%) !important;
+  -webkit-mask-image:linear-gradient(to bottom, transparent 0%, #000 9%, #000 76%, transparent 100%) !important;
+  mask-image:linear-gradient(to bottom, transparent 0%, #000 9%, #000 76%, transparent 100%) !important;
 }
 
-/* line-art florals on the sides of the couple photo */
+/* Natural floral artwork around the first/couple image */
 .heroPhoto::before,
 .heroPhoto::after{
   content:"" !important;
   position:absolute !important;
-  top:5% !important;
-  width:110px !important;
-  height:230px !important;
-  opacity:.24 !important;
+  top:3% !important;
+  width:128px !important;
+  height:260px !important;
+  opacity:.33 !important;
   pointer-events:none !important;
   z-index:2 !important;
+  background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27240%27%20height%3D%27440%27%20viewBox%3D%270%200%20240%20440%27%3E%0A%20%20%3Cdefs%3E%0A%20%20%20%20%3CradialGradient%20id%3D%27p%27%20cx%3D%2748%25%27%20cy%3D%2738%25%27%20r%3D%2770%25%27%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%270%27%20stop-color%3D%27%23FFF3DC%27%20stop-opacity%3D%27.88%27/%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%27.68%27%20stop-color%3D%27%23D8B676%27%20stop-opacity%3D%27.55%27/%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%271%27%20stop-color%3D%27%238B6A36%27%20stop-opacity%3D%27.25%27/%3E%0A%20%20%20%20%3C/radialGradient%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%27s%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%271%27%20y2%3D%271%27%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%270%27%20stop-color%3D%27%23D4AF6A%27%20stop-opacity%3D%27.8%27/%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%271%27%20stop-color%3D%27%236E5329%27%20stop-opacity%3D%27.4%27/%3E%0A%20%20%20%20%3C/linearGradient%3E%0A%20%20%3C/defs%3E%0A%20%20%3Cg%20fill%3D%27none%27%20stroke%3D%27url%28%23s%29%27%20stroke-width%3D%271.6%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%0A%20%20%20%20%3Cpath%20d%3D%27M150%20420C103%20332%20104%20217%20172%2034%27/%3E%0A%20%20%20%20%3Cpath%20d%3D%27M146%20418C132%20335%2086%20260%2019%20204%27/%3E%0A%20%20%20%20%3Cpath%20d%3D%27M151%20324c33-30%2064-42%2093-34%27/%3E%0A%20%20%20%20%3Cpath%20d%3D%27M126%20245c-38-20-78-23-119-9%27/%3E%0A%20%20%20%20%3Cpath%20d%3D%27M163%20168c27-27%2056-38%2087-31%27/%3E%0A%20%20%20%20%3Cpath%20d%3D%27M105%20365c-33%206-60%2023-82%2052%27/%3E%0A%20%20%3C/g%3E%0A%20%20%3Cg%20fill%3D%27url%28%23p%29%27%20stroke%3D%27%239D763C%27%20stroke-width%3D%27.8%27%20opacity%3D%27.66%27%3E%0A%20%20%20%20%3Cpath%20d%3D%27M181%2042c-34%207-53%2031-54%2070%2039-4%2061-29%2054-70z%27/%3E%0A%20%20%20%20%3Cpath%20d%3D%27M154%20142c-36%2012-56%2039-56%2078%2042-5%2066-34%2056-78z%27/%3E%0A%20%20%20%20%3Cpath%20d%3D%27M100%20228c-42-18-77-15-106%208%2033%2027%2070%2025%20106-8z%27/%3E%0A%20%20%20%20%3Cpath%20d%3D%27M92%20355c-35%205-62%2025-77%2060%2039%203%2068-18%2077-60z%27/%3E%0A%20%20%20%20%3Cpath%20d%3D%27M185%20292c31-17%2060-18%2085-1-23%2027-53%2027-85%201z%27/%3E%0A%20%20%3C/g%3E%0A%20%20%3Cg%20fill%3D%27%23CDA65F%27%20opacity%3D%27.48%27%3E%0A%20%20%20%20%3Ccircle%20cx%3D%27155%27%20cy%3D%27142%27%20r%3D%274%27/%3E%3Ccircle%20cx%3D%27181%27%20cy%3D%2742%27%20r%3D%273.2%27/%3E%3Ccircle%20cx%3D%27101%27%20cy%3D%27228%27%20r%3D%273.5%27/%3E%0A%20%20%20%20%3Ccircle%20cx%3D%27185%27%20cy%3D%27292%27%20r%3D%273.2%27/%3E%3Ccircle%20cx%3D%2792%27%20cy%3D%27355%27%20r%3D%273%27/%3E%0A%20%20%3C/g%3E%0A%20%20%3Cg%20fill%3D%27none%27%20stroke%3D%27%23CDA65F%27%20stroke-width%3D%27.9%27%20opacity%3D%27.28%27%3E%0A%20%20%20%20%3Cpath%20d%3D%27M187%20105c22-18%2042-24%2061-20%27/%3E%3Cpath%20d%3D%27M62%20171c-19-21-38-31-58-30%27/%3E%0A%20%20%20%20%3Cpath%20d%3D%27M181%20215c23-10%2044-12%2064-5%27/%3E%3Cpath%20d%3D%27M52%20298c-17%205-32%2014-45%2028%27/%3E%0A%20%20%3C/g%3E%0A%3C/svg%3E") !important;
   background-repeat:no-repeat !important;
   background-size:contain !important;
   background-position:center !important;
-  color:transparent !important;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='270' viewBox='0 0 140 270'%3E%3Cg fill='none' stroke='%238B6A36' stroke-width='1.55' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M82 253C50 190 48 123 96 25'/%3E%3Cpath d='M81 253c-7-39-31-78-69-113'/%3E%3Cpath d='M95 30c-27 7-40 25-38 54 29-3 46-21 38-54z'/%3E%3Cpath d='M78 93c-27 8-43 27-42 56 31-2 50-22 42-56z'/%3E%3Cpath d='M69 165c-24 6-43 23-48 52 30 1 51-17 48-52z'/%3E%3Cpath d='M56 199c-14-22-34-33-58-30 9 25 29 36 58 30z'/%3E%3Cpath d='M78 133c19-22 42-30 67-21-14 28-39 37-67 21z'/%3E%3Cpath d='M89 75c17-18 38-24 61-16-12 23-34 30-61 16z'/%3E%3Ccircle cx='78' cy='133' r='5'/%3E%3Ccircle cx='94' cy='75' r='4'/%3E%3Cpath d='M35 112c-13-16-31-23-52-19 8 22 27 31 52 19z'/%3E%3Cpath d='M103 191c15-8 31-8 48 1-13 15-29 17-48-1z'/%3E%3C/g%3E%3C/svg%3E") !important;
 }
 
 .heroPhoto::before{
-  left:0 !important;
-  transform:rotate(-4deg) !important;
+  left:-8px !important;
+  transform:rotate(-3deg) !important;
 }
 
 .heroPhoto::after{
-  right:0 !important;
-  transform:scaleX(-1) rotate(-4deg) !important;
+  right:-8px !important;
+  transform:scaleX(-1) rotate(-3deg) !important;
+}
+
+/* Better date typography */
+.dateCard,
+.month,
+.day,
+.year,
+.time,
+.eventCard strong,
+.eventCard p,
+.countItem strong{
+  font-family:"Cormorant Garamond", Georgia, serif !important;
+}
+
+.month,
+.year{
+  font-size:13px !important;
+  letter-spacing:.24em !important;
+  font-weight:600 !important;
+}
+
+.day{
+  font-size:112px !important;
+  line-height:.86 !important;
+  font-weight:500 !important;
+  letter-spacing:.02em !important;
+}
+
+.time{
+  font-size:13px !important;
+  letter-spacing:.10em !important;
+  font-weight:500 !important;
+}
+
+.eventCard p{
+  font-size:15px !important;
+  letter-spacing:.02em !important;
+  text-transform:none !important;
+}
+
+.eventCard strong{
+  font-weight:600 !important;
 }
 
 /* Venue heading fit - stops right-side whitespace */
@@ -539,14 +400,14 @@ footer { padding:32px 20px 42px; text-align:center; color:var(--soft); letter-sp
 }
 
 .venueContent .sectionTitle{
-  font-size:clamp(2.05rem, 7.2vw, 3.15rem) !important;
-  line-height:.94 !important;
+  font-size:clamp(1.95rem, 6.6vw, 2.9rem) !important;
+  line-height:.96 !important;
   letter-spacing:.005em !important;
   max-width:100% !important;
   width:100% !important;
 }
 
-/* keep countdown in one line on mobile */
+/* Keep countdown in one line on mobile */
 .countdown{
   display:grid !important;
   grid-template-columns:repeat(4, minmax(0, 1fr)) !important;
@@ -565,6 +426,7 @@ footer { padding:32px 20px 42px; text-align:center; color:var(--soft); letter-sp
 
 .countItem strong{
   font-size:clamp(26px, 8.2vw, 42px) !important;
+  font-weight:600 !important;
 }
 
 .countItem span{
@@ -575,18 +437,22 @@ footer { padding:32px 20px 42px; text-align:center; color:var(--soft); letter-sp
 @media (max-width:380px){
   .heroContent::before,
   .heroContent::after{
-    width:96px !important;
-    height:132px !important;
-    top:6px !important;
+    width:118px !important;
+    height:148px !important;
+    top:-8px !important;
   }
 
   .heroPhoto::before,
   .heroPhoto::after{
-    width:86px !important;
-    height:190px !important;
+    width:100px !important;
+    height:220px !important;
   }
 
   .venueContent .sectionTitle{
-    font-size:2.22rem !important;
+    font-size:2.05rem !important;
+  }
+
+  .day{
+    font-size:100px !important;
   }
 }
