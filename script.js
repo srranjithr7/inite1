@@ -101,11 +101,11 @@
     const p = getPoint(e);
     ctx.globalCompositeOperation = "destination-out";
     ctx.beginPath();
-    ctx.arc(p.x, p.y, 32, 0, Math.PI * 2);
+    ctx.arc(p.x, p.y, 24, 0, Math.PI * 2);
     ctx.fill();
     if (scratchCount % 3 === 0) addSpark(p.x, p.y);
     scratchCount++;
-    if (scratchCount > 28) finishReveal();
+    if (scratchCount > 75) finishReveal();
   }
 
   function launchSparkles() {

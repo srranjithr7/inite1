@@ -559,7 +559,7 @@ footer { padding:32px 20px 42px; text-align:center; color:var(--soft); letter-sp
   .venueContent { min-height: 58vh; }
 }
 
-/* === v26000: original first photo + blended natural bouquet styling === */
+/* === v27000: clean scratch section + improved natural floral hero artwork === */
 
 /* First page hero uses uploaded original full photo */
 .hero {
@@ -569,54 +569,108 @@ footer { padding:32px 20px 42px; text-align:center; color:var(--soft); letter-sp
 
 .heroPhoto {
   background-image:
-    linear-gradient(180deg, rgba(246,239,227,.02), rgba(246,239,227,.32)),
+    linear-gradient(180deg, rgba(246,239,227,.00), rgba(246,239,227,.22)),
     url("hero-original.jpeg") !important;
   background-size: cover !important;
-  background-position: center center !important;
+  background-position: center top !important;
   background-repeat: no-repeat !important;
 }
 
-/* Soft natural bouquet / botanical artwork blended into first page */
+/* More natural floral side artwork: soft ivory/gold botanical clusters */
+.heroFloralLayer,
+.hero::before,
+.hero::after,
+.heroPhoto::before,
+.heroPhoto::after {
+  pointer-events: none !important;
+}
+
 .hero::before,
 .hero::after {
   content: "" !important;
   position: absolute !important;
-  z-index: 0 !important;
-  pointer-events: none !important;
-  opacity: .55 !important;
-  filter: blur(.1px) !important;
+  z-index: 2 !important;
+  opacity: .82 !important;
+  filter: drop-shadow(0 12px 28px rgba(139,106,54,.10)) !important;
 }
 
+/* Top-left bouquet */
 .hero::before {
-  top: 18px !important;
-  left: 0 !important;
-  right: 0 !important;
-  height: 170px !important;
+  width: 170px !important;
+  height: 220px !important;
+  left: -14px !important;
+  top: 16px !important;
   background:
-    radial-gradient(ellipse at 18% 42%, rgba(255,255,255,.70) 0 7%, transparent 8%),
-    radial-gradient(ellipse at 25% 28%, rgba(226,198,150,.46) 0 5%, transparent 6%),
-    radial-gradient(ellipse at 75% 28%, rgba(226,198,150,.42) 0 5%, transparent 6%),
-    radial-gradient(ellipse at 82% 42%, rgba(255,255,255,.66) 0 7%, transparent 8%),
-    radial-gradient(ellipse at 32% 52%, rgba(125,115,83,.22) 0 3%, transparent 4%),
-    radial-gradient(ellipse at 68% 52%, rgba(125,115,83,.22) 0 3%, transparent 4%),
-    linear-gradient(105deg, transparent 0 17%, rgba(139,106,54,.22) 18%, transparent 19% 100%),
-    linear-gradient(75deg, transparent 0 81%, rgba(139,106,54,.22) 82%, transparent 83% 100%);
-  mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,.9) 44%, transparent 100%);
+    radial-gradient(ellipse at 34% 22%, rgba(255,255,255,.90) 0 10%, transparent 11%),
+    radial-gradient(ellipse at 48% 32%, rgba(255,255,255,.82) 0 8%, transparent 9%),
+    radial-gradient(ellipse at 25% 46%, rgba(255,255,255,.75) 0 7%, transparent 8%),
+    radial-gradient(ellipse at 56% 52%, rgba(232,205,154,.55) 0 6%, transparent 7%),
+    radial-gradient(ellipse at 40% 68%, rgba(156,139,91,.28) 0 4%, transparent 5%),
+    linear-gradient(130deg, transparent 0 35%, rgba(139,106,54,.28) 36%, transparent 37% 100%),
+    linear-gradient(110deg, transparent 0 47%, rgba(139,106,54,.18) 48%, transparent 49% 100%),
+    linear-gradient(70deg, transparent 0 53%, rgba(139,106,54,.16) 54%, transparent 55% 100%);
+  border-radius: 60% 40% 70% 30%;
+  mask-image: radial-gradient(ellipse at 35% 40%, #000 0 52%, transparent 76%);
 }
 
+/* Top-right bouquet */
 .hero::after {
-  left: 16px !important;
-  right: 16px !important;
-  bottom: 22px !important;
-  height: 120px !important;
+  width: 180px !important;
+  height: 230px !important;
+  right: -20px !important;
+  top: 8px !important;
   background:
-    radial-gradient(ellipse at 7% 30%, rgba(255,255,255,.52) 0 10%, transparent 11%),
-    radial-gradient(ellipse at 13% 50%, rgba(218,194,145,.36) 0 8%, transparent 9%),
-    radial-gradient(ellipse at 91% 30%, rgba(255,255,255,.52) 0 10%, transparent 11%),
-    radial-gradient(ellipse at 86% 50%, rgba(218,194,145,.36) 0 8%, transparent 9%),
-    linear-gradient(115deg, transparent 0 11%, rgba(139,106,54,.18) 12%, transparent 13% 100%),
-    linear-gradient(65deg, transparent 0 87%, rgba(139,106,54,.18) 88%, transparent 89% 100%);
-  mask-image: linear-gradient(0deg, #000 0%, rgba(0,0,0,.82) 48%, transparent 100%);
+    radial-gradient(ellipse at 68% 20%, rgba(255,255,255,.90) 0 10%, transparent 11%),
+    radial-gradient(ellipse at 52% 32%, rgba(255,255,255,.80) 0 8%, transparent 9%),
+    radial-gradient(ellipse at 76% 45%, rgba(255,255,255,.72) 0 7%, transparent 8%),
+    radial-gradient(ellipse at 44% 56%, rgba(232,205,154,.55) 0 6%, transparent 7%),
+    radial-gradient(ellipse at 60% 70%, rgba(156,139,91,.28) 0 4%, transparent 5%),
+    linear-gradient(50deg, transparent 0 42%, rgba(139,106,54,.28) 43%, transparent 44% 100%),
+    linear-gradient(72deg, transparent 0 52%, rgba(139,106,54,.18) 53%, transparent 54% 100%),
+    linear-gradient(120deg, transparent 0 50%, rgba(139,106,54,.16) 51%, transparent 52% 100%);
+  border-radius: 40% 60% 30% 70%;
+  mask-image: radial-gradient(ellipse at 65% 40%, #000 0 52%, transparent 76%);
+}
+
+/* Florals blended directly on the photo frame */
+.heroPhoto {
+  position: relative !important;
+}
+
+.heroPhoto::before,
+.heroPhoto::after {
+  content: "" !important;
+  position: absolute !important;
+  z-index: 2 !important;
+  opacity: .68 !important;
+}
+
+.heroPhoto::before {
+  left: -16px !important;
+  top: 22px !important;
+  width: 135px !important;
+  height: 190px !important;
+  background:
+    radial-gradient(ellipse at 30% 22%, rgba(255,255,255,.82) 0 9%, transparent 10%),
+    radial-gradient(ellipse at 50% 35%, rgba(245,234,207,.72) 0 7%, transparent 8%),
+    radial-gradient(ellipse at 25% 55%, rgba(225,197,145,.42) 0 6%, transparent 7%),
+    linear-gradient(132deg, transparent 0 44%, rgba(139,106,54,.22) 45%, transparent 46% 100%),
+    linear-gradient(102deg, transparent 0 55%, rgba(139,106,54,.16) 56%, transparent 57% 100%);
+  mask-image: radial-gradient(ellipse at 35% 38%, #000 0 52%, transparent 75%);
+}
+
+.heroPhoto::after {
+  right: -18px !important;
+  top: 26px !important;
+  width: 145px !important;
+  height: 190px !important;
+  background:
+    radial-gradient(ellipse at 72% 22%, rgba(255,255,255,.82) 0 9%, transparent 10%),
+    radial-gradient(ellipse at 52% 35%, rgba(245,234,207,.72) 0 7%, transparent 8%),
+    radial-gradient(ellipse at 76% 55%, rgba(225,197,145,.42) 0 6%, transparent 7%),
+    linear-gradient(48deg, transparent 0 44%, rgba(139,106,54,.22) 45%, transparent 46% 100%),
+    linear-gradient(78deg, transparent 0 55%, rgba(139,106,54,.16) 56%, transparent 57% 100%);
+  mask-image: radial-gradient(ellipse at 65% 38%, #000 0 52%, transparent 75%);
 }
 
 .heroContent,
@@ -625,20 +679,21 @@ footer { padding:32px 20px 42px; text-align:center; color:var(--soft); letter-sp
   z-index: 1 !important;
 }
 
-/* Make invite text blend over the photo cleanly */
+/* Blend invitation line with hero */
 .heroContent {
-  background: linear-gradient(180deg, rgba(246,239,227,.76), rgba(246,239,227,.46), rgba(246,239,227,.08)) !important;
+  background:
+    linear-gradient(180deg, rgba(246,239,227,.78), rgba(246,239,227,.44), rgba(246,239,227,.08)) !important;
 }
 
 .heroContent .intro {
   display: inline-block !important;
   padding: 8px 14px !important;
   border-radius: 999px !important;
-  background: rgba(246,239,227,.38) !important;
+  background: rgba(246,239,227,.42) !important;
   backdrop-filter: blur(1px) !important;
 }
 
-/* Save the Date remains plain */
+/* Scratch section: remove extra labels, keep only foil text */
 .dateReveal,
 .dateRevealWithVenueBg {
   background-image: none !important;
@@ -649,6 +704,40 @@ footer { padding:32px 20px 42px; text-align:center; color:var(--soft); letter-sp
 .dateReveal::before,
 .dateRevealWithVenueBg::before {
   display:none !important;
+}
+
+.dateHeadline {
+  display: block !important;
+  margin-bottom: 30px !important;
+  line-height: .95 !important;
+}
+
+.dateHeadline strong {
+  display: block !important;
+  font-family: Italiana, serif !important;
+  font-weight: 700 !important;
+  font-size: clamp(3.8rem, 12vw, 7.5rem) !important;
+  color: var(--deep) !important;
+}
+
+.dateHeadline span {
+  display: block !important;
+  margin-top: 10px !important;
+  font-family: Inter, Arial, sans-serif !important;
+  font-size: clamp(.75rem, 2.8vw, 1rem) !important;
+  letter-spacing: .18em !important;
+  text-transform: uppercase !important;
+  color: var(--accent) !important;
+}
+
+.dateReveal .hint,
+.dateReveal #revealBtn {
+  display: none !important;
+}
+
+/* Make scratch card clean after text removal */
+.scratchBox {
+  margin-top: 18px !important;
 }
 
 /* Countdown keeps uploaded hands image full background */
@@ -816,6 +905,18 @@ footer { padding:32px 20px 42px; text-align:center; color:var(--soft); letter-sp
 }
 
 @media (max-width:760px) {
+  .hero::before {
+    width: 145px !important;
+    height: 180px !important;
+    opacity: .70 !important;
+  }
+
+  .hero::after {
+    width: 150px !important;
+    height: 185px !important;
+    opacity: .70 !important;
+  }
+
   .heroPhoto {
     width: calc(100% - 32px) !important;
     height: 560px !important;
@@ -827,6 +928,15 @@ footer { padding:32px 20px 42px; text-align:center; color:var(--soft); letter-sp
   .heroContent {
     padding-top: 34px !important;
     padding-bottom: 16px !important;
+  }
+
+  .dateHeadline strong {
+    font-size: clamp(3.2rem, 13vw, 5.5rem) !important;
+  }
+
+  .dateHeadline span {
+    font-size: .72rem !important;
+    letter-spacing: .15em !important;
   }
 
   .countSection.countdownPhotoBg {
