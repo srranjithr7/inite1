@@ -552,3 +552,55 @@ footer { padding:32px 20px 42px; text-align:center; color:var(--soft); letter-sp
     opacity: .52 !important;
   }
 }
+
+
+/* === v15000: venue image moved into Save the Date background === */
+.venuePhoto{display:none!important;}
+
+.dateRevealVenueBg{
+  position:relative;
+  overflow:hidden;
+  min-height:100svh;
+  background-image:
+    linear-gradient(180deg, rgba(246,239,227,.80), rgba(246,239,227,.88)),
+    linear-gradient(180deg, rgba(216,200,181,.05), rgba(216,200,181,.68)), url('data:image/jpeg;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+.dateRevealVenueBg::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(255,255,255,.35), transparent 34%),
+    linear-gradient(180deg, rgba(16,43,39,.12), rgba(246,239,227,.72));
+  pointer-events:none;
+  z-index:0;
+}
+
+.dateRevealVenueBg .sectionInner{
+  position:relative;
+  z-index:1;
+  background:rgba(246,239,227,.72);
+  border:1px solid rgba(139,106,54,.22);
+  border-radius:34px;
+  box-shadow:0 24px 70px rgba(72,52,30,.16);
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+  padding-top:42px;
+  padding-bottom:42px;
+}
+
+@media (max-width:700px){
+  .dateRevealVenueBg{
+    min-height:100svh;
+    padding-left:16px;
+    padding-right:16px;
+  }
+  .dateRevealVenueBg .sectionInner{
+    width:100%;
+    padding:34px 16px;
+  }
+}
